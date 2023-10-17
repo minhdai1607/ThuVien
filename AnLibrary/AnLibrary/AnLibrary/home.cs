@@ -16,5 +16,11 @@ namespace AnLibrary
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frm_sach s = new frm_sach();
+            s.ShowDialog();
+        }
     }
 }

@@ -38,10 +38,11 @@ namespace AnLibrary
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtgv_search = new System.Windows.Forms.DataGridView();
+            this.search_btn = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.search_btn = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@ namespace AnLibrary
             this.button5 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.dtgv_search = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_search)).BeginInit();
             this.SuspendLayout();
@@ -150,6 +150,42 @@ namespace AnLibrary
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm thông tin";
             // 
+            // dtgv_search
+            // 
+            this.dtgv_search.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_search.Location = new System.Drawing.Point(21, 71);
+            this.dtgv_search.Name = "dtgv_search";
+            this.dtgv_search.Size = new System.Drawing.Size(623, 396);
+            this.dtgv_search.TabIndex = 4;
+            // 
+            // search_btn
+            // 
+            this.search_btn.AutoSize = true;
+            this.search_btn.BackgroundImage = global::AnLibrary.Properties.Resources.search;
+            this.search_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.search_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.search_btn.Location = new System.Drawing.Point(614, 28);
+            this.search_btn.Name = "search_btn";
+            this.search_btn.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.search_btn.Size = new System.Drawing.Size(40, 27);
+            this.search_btn.TabIndex = 3;
+            this.search_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.search_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.search_btn.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Thủ thư",
+            "Sách",
+            "Độc giả",
+            "Nhà xuất bản"});
+            this.comboBox1.Location = new System.Drawing.Point(212, 27);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(134, 28);
+            this.comboBox1.TabIndex = 2;
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(352, 28);
@@ -166,34 +202,6 @@ namespace AnLibrary
             this.label10.Size = new System.Drawing.Size(189, 22);
             this.label10.TabIndex = 0;
             this.label10.Text = "Nhập thông tin cần tìm";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Thủ thư",
-            "Sách",
-            "Độc giả",
-            "Nhà xuất bản"});
-            this.comboBox1.Location = new System.Drawing.Point(212, 27);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(134, 28);
-            this.comboBox1.TabIndex = 2;
-            // 
-            // search_btn
-            // 
-            this.search_btn.AutoSize = true;
-            this.search_btn.BackgroundImage = global::AnLibrary.Properties.Resources.search;
-            this.search_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.search_btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.search_btn.Location = new System.Drawing.Point(614, 26);
-            this.search_btn.Name = "search_btn";
-            this.search_btn.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.search_btn.Size = new System.Drawing.Size(40, 23);
-            this.search_btn.TabIndex = 3;
-            this.search_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.search_btn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.search_btn.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -290,14 +298,7 @@ namespace AnLibrary
             this.button1.Size = new System.Drawing.Size(42, 45);
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = false;
-            // 
-            // dtgv_search
-            // 
-            this.dtgv_search.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv_search.Location = new System.Drawing.Point(21, 71);
-            this.dtgv_search.Name = "dtgv_search";
-            this.dtgv_search.Size = new System.Drawing.Size(623, 396);
-            this.dtgv_search.TabIndex = 4;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Home
             // 
