@@ -4,9 +4,12 @@ from PIL import Image
 import imagehash
 from docx import Document
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+UPLOAD_FOLDER = os.path.join(BASE_DIR, 'static', 'uploads')
+DATA_FOLDER = os.path.join(BASE_DIR, 'data')
+
 app = Flask(__name__)
-UPLOAD_FOLDER = 'static/uploads'
-DATA_FOLDER = 'data'
 SIMILARITY_THRESHOLD = 0.8
 
 # Load hash of existing images
@@ -33,6 +36,7 @@ def read_docx(filename):
 def index():
     image_hashes = load_image_hashes()
     results = []
+    message = None
 
     if request.method == 'POST':
         if 'compare' in request.form:
@@ -50,6 +54,8 @@ def index():
                         description = read_docx(doc_name)
                         results.append({'image': fname, 'desc': description, 'score': round(similarity*100, 2)})
 
+                message = "Image compared successfully!"
+
         elif 'add_new' in request.form:
             new_image = request.files.get('new_image')
             new_doc = request.files.get('new_doc')
@@ -58,9 +64,10 @@ def index():
                 doc_path = os.path.join(DATA_FOLDER, new_doc.filename)
                 new_image.save(image_path)
                 new_doc.save(doc_path)
-                return redirect('/')
+                message = "New image and document added successfully!"
 
-    return render_template('index.html', results=results)
+    return render_template('index.html', results=results, message=message)
+
 
 if __name__ == '__main__':
     os.makedirs(UPLOAD_FOLDER, exist_ok=True)

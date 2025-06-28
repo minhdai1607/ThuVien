@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Matcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h2 {
+            color: #007BFF;
+        }
+        form {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px #ccc;
+        }
+        input[type="file"] {
+            margin: 10px 0;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .results {
+            margin-top: 30px;
+        }
+        .result-item {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px #bbb;
+        }
+        img {
+            max-width: 200px;
+            margin-top: 10px;
+        }
+        .alert {
+            padding: 10px 15px;
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    {% if message %}
+        <div class="alert">{{ message }}</div>
+    {% endif %}
+
+    <h2>Compare Image</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <br>
+        <button type="submit" name="compare">Compare</button>
+    </form>
+
+    <h2>Add New Image + Description</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="new_image" required> (Image)<br>
+        <input type="file" name="new_doc" required> (.docx)<br>
+        <button type="submit" name="add_new">Add</button>
+    </form>
+
+    <div class="results">
+        <h3>Matching Results:</h3>
+        {% if results %}
+            {% for item in results %}
+                <div class="result-item">
+                    <p><strong>Match:</strong> {{ item.score }}%</p>
+                    <img src="/data/{{ item.image }}" alt="Matched Image">
+                    <p><strong>Description:</strong></p>
+                    <pre>{{ item.desc }}</pre>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No matches found or image not uploaded yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
