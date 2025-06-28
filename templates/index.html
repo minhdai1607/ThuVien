@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Matcher</title>
+</head>
+<body>
+    <h2>Compare Image</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <button type="submit" name="compare">Compare</button>
+    </form>
+
+    <h2>Add New Image + Description</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="new_image" required> (Image)
+        <input type="file" name="new_doc" required> (.docx)
+        <button type="submit" name="add_new">Add</button>
+    </form>
+
+    <hr>
+    <h3>Matching Results:</h3>
+    {% if results %}
+        {% for item in results %}
+            <div style="margin-bottom:20px;">
+                <p><strong>Match:</strong> {{ item.score }}%</p>
+                <img src="/data/{{ item.image }}" width="200"><br>
+                <p><strong>Description:</strong></p>
+                <pre>{{ item.desc }}</pre>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No matches found or image not uploaded yet.</p>
+    {% endif %}
+</body>
+</html>
