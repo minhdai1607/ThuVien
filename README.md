@@ -1,2 +1,2 @@
 # ThuVien
-Cho thuê mượn sách
+Nơi lưu ảnh và compare
